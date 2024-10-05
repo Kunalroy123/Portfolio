@@ -1,38 +1,693 @@
-.App {
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  position: relative;
+}
+
+.navbar{
+  background-color: black;
+}
+
+nav ul{
+  width: 100%;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+nav li{
+  height: 50px;
+  
+}
+
+nav a{
+  height: 100%;
+  margin: 0 30px;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+nav ul li:not(:first-child) a:after{
+  content: '';
+  width: 0%;
+  height: 3px;
+  background-color: #ff004f;
+  position: absolute;
+  top: 38px;  
+  left: 0;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+nav ul li a:hover::after{
+  width: 100%;
+}
+
+.navbar li:first-child{
+  margin-right: auto;
+  font-size: 2rem;
+}
+
+#bold{
+  color: #ff004f;
+}
+
+.sidebar{
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100dvh;
+  width: 250px;
+  z-index: 999;
+  background-color: #ff004f;
+  box-shadow: -10px 0 10px rgba(0, 0 , 0, 0.2);
+  backdrop-filter: blur(10px);
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.sidebar li{
+  width: 100%;
+} 
+
+.sidebar a{
+  width: 100%;
+  color: #fff;
+} 
+
+.sidebar p{
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  color: #fff;
+}
+
+.menu li:last-child{
+  display: none;
+  color: #fff;
+  padding-top: 15px;
+  margin-right: 30px;
+  font-size: 20px;
+}
+
+/* ..........Navbar css for small screen....... */
+
+@media only screen and (max-width: 600px){
+  nav ul li:not(:first-child) a:after{
+      content: '';
+      width: 0%;
+      height: 3px;
+      background-color: #ff004f;
+      position: absolute;
+      top: 38px;  
+      left: 0;
+      border-radius: 5px;
+      transition: 0.5s;
+  }
+
+  nav ul li a:hover::after{
+      width: 23%;
+  } 
+
+  .menu li:last-child{
+      display: block;
+      font-size: 1.5rem;
+  }
+
+  .hideMenu{
+      display: none;
+  }
+}
+
+
+/* ...........home section............... */
+
+.home{
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+}
+
+.bg-image img{
+  height: 100vh;
+}
+
+.text{
+ margin: 30vh 10vw;
+}
+
+#name{
+  font-size: 3rem;
+}
+
+.animate-name{
+  display: inline-flex;
+  border-right: 3px solid #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2.5s linear infinite alternate;
+}
+
+@keyframes typing{
+  from{
+      width: 0;
+  }
+  to{
+      width: 25%;
+  }
+}
+
+#role{
+  font-size: 1.5rem;
+  color: #ff004f;
+}
+
+#summary{
+  color: #fff;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  width: 40vw;
+}
+
+.icons{
+  margin-top: 30px;
+}
+
+.icons a{
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+.icons a:first-child{
+  padding-left: 0;
+}
+
+.icons i{
+  font-size: 1.5rem;
+  border: 2px solid #ff004f;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s ease;
+}
+
+.btn{
+  margin-top: 20px;
+}
+
+.btn a{
+  text-decoration: none;
+}
+
+.btn button{
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #ff004f;
+  outline: none;
+  border: none;
+}
+
+
+/* .........home layout css for mobile view............. */
+
+@media only screen and (max-width: 600px){
+  .home{
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+  }
+
+  
+
+  .bg-image{
+      height: 40vh;
+      width: 80%;
+      margin: 5% auto;
+      color: #fff;
+      border: 2px solid #ff004f;
+      border-radius: 50%;
+      box-shadow: 0px 0px 10px 10px #ff004f;
+      position: relative;
+      overflow: hidden;
+  }
+  .image{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: contain;
+      width: 80%;
+  }
+  
+  .text{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+  }
+  
+  .animate-name{
+      display: inline-flex;
+      border-right: 3px solid #fff;
+      overflow: hidden;
+      white-space: nowrap;
+      animation: typing 2.5s linear infinite alternate;
+  }
+
+  @keyframes typing{
+      from{
+          width: 0;
+      }
+      to{
+          width: 45.9%;
+      }
+  }
+  
+  #summary{
+      font-size: 1rem;
+      width: 80%;
+      text-align: center;
+  }
+
+  .icons a{
+      padding-left: 10px;
+  }
+
+  .btn button:first-child{
+      text-align: left;
+  }
+}
+
+
+/*................ About Section................. */
+
+.about{
+  padding: 50px 0;
+  color: #ababab;
+  height: 100vh;
+}
+
+.row{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.about-col-1{
+  flex-basis: 35%;
+  text-align: end;
+}
+
+.about-col-1 img{
+  height: 70vh;
+  border-radius: 1rem;
+}
+
+.about-col-2{
+  flex-basis: 60%;
+}
+
+.text2{
+  width: 100%;
+  padding-right: 25%;
+}
+
+.sub-title{
+  font-size: 3rem;
+  color: #fff;
+}
+
+.tab-title{
+  display: flex;
+  margin: 20px 0 20px;
+}
+
+.tab-links{
+  margin-right: 50px;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+}
+
+.tab-links::after{
+  content: '';
+  width: 0%;
+  height: 3px;
+  background-color: #ff004f;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transition: 0.5s ease;
+}
+
+.tab-links.active-link::after{
+  width: 100%;
+}
+
+.tab-contents{
+  color: #ff004f;
+}
+
+.tab-contents li{
+  list-style-type: none;
+  margin: 10px 0;
+}
+
+.tab-contents{
+  display: none;
+}
+
+.tab-contents.active-tab{
+  display: block;
+}
+
+
+/* .........about layout css for mobile view............. */
+
+
+@media only screen and (max-width: 600px){
+  .about{
+      margin-top: 50px;
+      padding: 0;
+      height: max-content;
+      margin-bottom: 50px;
+  }
+  .about-col-1{
+      margin: 0 20px;
+  }
+  .about-col-1 img{
+      height: 500px;
+  }
+  .about-col-2 h1{
+      flex-basis: 100%;
+      text-align: center;
+      margin-top: 10px;
+  }
+  .about-col-2{
+      margin: 0 20px;
+      flex-basis: 100%;
+  }
+  .about-col-2 .text2{
+      width: 100%;
+      padding-right: 0;
+      margin-top: 5px;
+  }
+
+}
+
+
+/* ............Projects.................. */
+
+.projects{
+  width: 100%;
+  height: auto;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.container-3{
+  margin: 10px 0;
+  width: 100%;
+  height: auto;
+}
+
+.container-3 h1{
+  font-size: 3rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-box{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  gap: 30px;
+  margin: 20px 0px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.box{
+  height: 40vh;
+  width: 300px;
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.box img{
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  display: block;
+  transform: transform 0.5s;
+}
+
+.sub-details{
+  height: 0;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), #ff004f);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  color: #fff;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  transition: height 0.5s;
 }
 
-.App-link {
-  color: #61dafb;
+.sub-details h3{
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.sub-details a{
+  height: 3rem;
+  width: 3rem;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+
+.sub-details i{
+  font-size: 1.5rem;
+  color: black;
+  z-index: 1;
+  margin-top: 10px;
+}
+
+.box:hover img{
+  transform: scale(1.1);
+}
+
+.box:hover .sub-details{
+  height: 100%;
+}
+
+.btn2{
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+  border: 1px solid #ff004f;
+  border-radius: 0.3rem;
+  padding: 10px 50px;
+  color: #fff;
+  background-color: transparent;
+  text-decoration: none;
+  transition: background 0.5s;
+}
+
+.btn2:hover{
+  background: #ff004f;
+}
+
+
+/* .........projects layout css for mobile view............. */
+
+
+@media only screen and (max-width: 600px){
+  .projects{
+      display: flex;
+      flex-wrap: wrap;
+      height: auto;
   }
-  to {
-    transform: rotate(360deg);
+
+  .main-box {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+      height: auto;
   }
+
+  .box{
+      width: 300px;
+      height: 300px;
+  }
+}
+
+
+/* ..................contact................ */
+
+.contact{
+  margin: 15vh 0 0 0;
+  height: 60vh;
+}
+
+.contact-left{
+  flex-basis: 35%;
+  color: #fff;    
+  padding-left: 12vw;
+
+}
+
+.contact-right{
+  flex-basis: 60%;
+  padding-right: 14vw;
+  padding-top: 10px;
+}
+
+.contact-right form{
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-right input, textarea{
+  margin-bottom: 20px;
+  padding: 10px 8px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #262626;
+  color: #fff;
+}
+
+.contact-left h1{
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.contact-left p{
+  margin-top: 20px;
+}
+
+.contact-left p i{
+  font-size: 1.3rem;
+  padding-right: 5px;
+}
+
+.footer-icons{
+  font-size: 1.5rem;
+  display: flex;
+  gap: 10px;
+}
+
+.footer-icons i{
+  width: 30px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-icons i:hover{
+  background-color: #ff004f;
+  border: 1px solid #ff004f;
+  border-radius: 5px;
+}
+
+
+.download-btn{
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  width: fit-content;
+  border: 1px solid #ff004f;
+  background-color: #ff004f;
+  border-radius: 0.3rem;
+  padding: 12px 35px;
+  margin-top: 30px;
+  text-decoration: none;
+}
+
+.submit-btn{
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  width: fit-content;
+  border: 1px solid #ff004f;
+  background-color: #ff004f;
+  border-radius: 0.3rem;
+  padding: 12px 35px;
+  cursor: pointer;
+}
+
+.copyright{
+  color: #ababab;
+  text-align: center;
+  background-color: #262626;
+  font-weight: 300;
+  width: 100%;
+  padding: 10px;
+  margin-top: 30px;
+}
+
+
+/* .........contact layout css for mobile view............. */
+
+
+@media only screen and (max-width: 600px){
+  .contact{
+      height: auto;
+      margin: 30px 0;
+  }
+
+  .contact-left{
+      flex-basis: 100%;
+      padding: 20px;
+  }
+
+  .contact-left h1{
+      text-align: center;
+  }
+
+  .contact-right{
+      flex-basis: 100%;
+      padding: 20px;
+  }
+ 
+  .copyright{
+      padding: 10px;
+      font-size: 0.8rem;
+  }
+  
 }
