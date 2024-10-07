@@ -1,21 +1,3 @@
-// Select elements for sidebar toggle functionality
-const show = document.querySelector('.show');
-const hide = document.querySelector('.hide');
-const sidebar = document.querySelector('.sidebar');
-
-// Show sidebar
-if (show) {
-    show.addEventListener('click', function() {
-        sidebar.style.display = 'flex';
-    });
-}
-
-// Hide sidebar
-if (hide) {
-    hide.addEventListener('click', function() {
-        sidebar.style.display = 'none';
-    });
-}
 
 // Tab functionality
 const tablinks = document.getElementsByClassName('tab-links');
@@ -34,24 +16,27 @@ export function opentab(event, tabname) {
 
 
 // Form submission functionality
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyMrFpLeMAb4C5YtcHMw0BF1Tlfhny1kVaEz_XEsNLIbOs_CztfJGSMDHTtPVXfaEbVcQ/exec';
-const form = document.forms['submit-to-google-sheet'];
-const submitButton = document.querySelector('.submit-btn');
+export const handleFormSubmit = (formRef, submitButtonRef, scriptURL) => {
+    if (formRef.current) {
+        formRef.current.addEventListener('submit', e => {
+            e.preventDefault();
+            submitButtonRef.current.disabled = true; 
 
-if (form) {
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        submitButton.disabled = true;
-
-        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-        .then(response => {
-            alert("Message sent successfully.");
-            form.reset();
-        })
-        .catch(error => { console.error('Error!', error.message);
-        })
-        .finally(() => {
-            submitButton.disabled = false;
+            fetch(scriptURL, { method: 'POST', body: new FormData(formRef.current) })
+            .then(response => {
+                if (response.ok) { 
+                    alert('Message sent successfully.');
+                    formRef.current.reset();
+                    submitButtonRef.current.disabled = false; 
+                } else {
+                    throw new Error('Form submission failed.');
+                }
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('Failed to send message, please try again.');
+                submitButtonRef.current.disabled = false; 
+            });
         });
-    });
-}
+    }
+};
